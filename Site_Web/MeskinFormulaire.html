@@ -13,6 +13,7 @@
                     <a href="Accueil.html">Accueil</a>
                     <a href="MeskinFormulaire.html">Formulaire</a>
                     <a href="./apropos.html">À propos</a>
+                    <a href="contact.html">Contact</a>
                 </nav>
             </header>
   
@@ -21,11 +22,11 @@
     <form action="#" method="post">
         <fieldset>
             <legend>Vos informations</legend>
-            <label>Nom : <input type="text" name="nom"></label><br>
-            <label>Prénom : <input type="text" name="prenom"></label><br>
-            <label>Date de naissance : <input type="date" name="dob"></label><br>
-            <label>Adresse mail : <input type="email" name="email"></label><br>
-            <label>Statut :
+            <label for="nom">Nom :</label><input type="text" name="nom" id="nom"><br>
+            <label for="prenom">Prénom :</label><input type="text" name="prenom" id="prenom"><br>
+            <label for="dob">Date de naissance :</label><input type="date" name="dob" id="dob"><br>
+            <label for="email">Adresse mail :</label><input type="email" name="email" id="email"><br>
+            <label>Statut:
                 <select name="statut">
                     <option value="" selected disabled>Choisissez un statut</option>
                     <option value="etudiant">Étudiant</option>

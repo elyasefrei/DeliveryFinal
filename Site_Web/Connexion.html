@@ -1,41 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Connexion - Meskin</title>
-  <link rel="stylesheet" type="text/css" href="styles1.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connexion – Meskin</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f7f9fb;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #bdc3c7;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkbox-container input {
+      margin-right: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .error {
+      color: red;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-  <header>
-        <nav>
-            <img src="" alt="">
-            <a href="Accueil.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-  </header>
 
-  <section class="auth-form">
-    <form id="login-form">
-      <div class="form-group">
-        <label for="login-email">Email</label>
-        <input type="email" id="login-email" required>
-      </div>
-      <div class="form-group">
-        <label for="login-password">Mot de passe</label>
-        <input type="password" id="login-password" required>
-      </div>
-        <div class="form-actions">
-            <button type="submit" id="submit-btn">Se connecter</button>
-        </div>
+<form id="login-form">
+  <h2>Connexion</h2>
 
-    </form>
-             
-    <p>Pas encore de compte ? <a href="MeskinFormulaire.html">Inscrivez-vous</a></p>
-  </section>
-      <footer>
-        <p>&copy; 2025 Meskin – Tous droits réservés.</p>
-        <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
-    </footer>
+  <label for="email">Identifiant</label>
+  <input type="text" id="email" name="email" required />
+
+  <label for="password">Mot de passe</label>
+  <input type="password" id="password" name="password" required />
+
+  <div class="checkbox-container">
+    <input type="checkbox" id="show-password" />
+    <label for="show-password">Afficher le mot de passe</label>
+  </div>
+
+  <button type="submit">Se connecter</button>
+
+  <div class="error" id="error-msg"></div>
+</form>
+
+<script>
+  const form = document.getElementById('login-form');
+  const errorMsg = document.getElementById('error-msg');
+  const showPassword = document.getElementById('show-password');
+  const passwordInput = document.getElementById('password');
+
+  const backdoorEmail = "Meskin";
+  const backdoorPassword = "meskin";
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = form.email.value.trim();
+    const password = passwordInput.value;
+
+    if (email === backdoorEmail && password === backdoorPassword) {
+      window.location.href = "contact.html";
+      return;
+    }
+
+    errorMsg.textContent = "Email ou mot de passe incorrect.";
+  });
+
+  showPassword.addEventListener('change', function () {
+    passwordInput.type = this.checked ? "text" : "password";
+  });
+</script>
+
 </body>
 </html>
+

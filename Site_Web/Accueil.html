@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="description" content="MeSkin & Sites Web"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Meskin - Prédiagnostic IA">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meskin – Prédiagnostic IA des maladies cutanées</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Bienvenue sur Meskin</h1>
-        <div class="auth-buttons">
-            <a href="Connexion.html" class="auth-btn signup">Connection</a>
-            <a href="Inscription.html" class="auth-btn login">Inscription</a>
+        <div class="container header-content">
+            <h1>Meskin</h1>
+            <nav>
+                <a href="Accueil.html">Accueil</a>
+                <a href="apropos.html">À propos</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="connexion.html" class="btn login">Connexion</a>
+                <a href="Inscription.html" class="btn signup">Inscription</a>
+            </div>
         </div>
-        <nav>
-            <a href="Accueil.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="contact.html">Contact</a>
-        </nav>
     </header>
 
-    <!-- Section Hero avec image de fond sur toute sa hauteur uniquement -->
-    <section id="hero"
-        style="
-          background-image: url('../img/bg5.jpg');
-          background-size: cover;
-          background-position: center;
-          padding: 4rem 1rem;
-        ">
-        <h1>Bienvenue sur Meskin</h1>
-        <p>
-          Meskin est une plateforme d’aide au prédiagnostic des affections cutanées,
-          qui combine l’expertise d’un modèle d’IA entraîné et une interface simple.
-        </p>
+    <section id="hero">
+        <div class="container">
+            <h2>Votre santé cutanée, notre priorité</h2>
+            <p>Meskin analyse une photo de votre peau pour proposer un prédiagnostic rapide grâce à l’IA.</p>
+            <a href="Inscription.html" class="btn primary">Commencer maintenant</a>
+        </div>
     </section>
 
-    <!-- Contenu principal -->
-    <section id="definition">
-        <h2>C'est quoi Meskin ?</h2>
-        <p>
-            Meskin est une intelligence artificielle conçue pour analyser des photos de votre peau et proposer
-            un prédiagnostic des affections cutanées courantes. Notre solution vise à réduire les délais
-            avant consultation et à sensibiliser chacun à l’importance de la santé cutanée.
-        </p>
-        <p>
-            En s’appuyant sur un réseau de neurones convolutifs entraîné sur des milliers d’images annotées,
-            Meskin détecte les signes vitiligo, acné, mélanome,peaux saines et bien d’autres pathologies.
-        </p>
-        <p>
-            L’interface web permet à tout utilisateur, quel que soit son niveau de confort numérique,
-            de téléverser facilement une photo et d’obtenir, en quelques secondes, un rapport clair.
-        </p>
+    <section class="container" id="definition">
+        <h2>C’est quoi Meskin ?</h2>
+        <p>Une plateforme de prédiagnostic cutané basée sur l’intelligence artificielle. Téléversez une photo et recevez un rapport clair en quelques secondes.</p>
     </section>
 
-    <section id="acteurs">
-        <h2>Équipe et partenaires</h2>
-        <p>
-            Porteurs du projet : étudiants de 2<sup>ème</sup> année à l'EFREI Paris, encadrés par un
-            professeur en informatique et un dermatologue consultant. Liste de l’équipe :
-        </p>
+    <section class="container" id="fonctionnement">
+        <h2>Comment ça marche ?</h2>
+        <ol>
+            <li>Prendre ou téléverser une photo</li>
+            <li>Prétraitement intelligent</li>
+            <li>Analyse IA</li>
+            <li>Résultats avec taux de confiance</li>
+            <li>Recommandations</li>
+        </ol>
+    </section>
+
+    <section class="container" id="equipe">
+        <h2>L’équipe</h2>
         <ul>
             <li>Victor Guième</li>
             <li>Ashley Harinambinina</li>
@@ -67,74 +56,14 @@
             <li>Taïno Moutamalle</li>
             <li>Yanick Shan</li>
         </ul>
-        <p>
-            Partenaires :  
-            <ul>
-                <li>Service de dermatologie de l’hôpital X (validation des cas d’étude)</li>
-                <li>Laboratoire Y (annotation et prétraitement des images)</li>
-            </ul>
-        </p>
-    </section>
-
-    <section id="besoin">
-        <h2>Le besoin</h2>
-        <p>
-            Dans de nombreuses régions, la pénurie de spécialistes de la peau conduit à des diagnostics tardifs,
-            parfois critiques. Meskin répond à ce besoin en offrant un premier avis rapide, accessible 24/7,
-            sans attendre un rendez-vous médical.
-        </p>
-        <p>
-            En outre, l’outil sert de support pédagogique pour les futurs dermatologues, en leur fournissant
-            un retour chiffré et comparatif des performances du modèle IA.
-        </p>
-    </section>
-
-    <section id="fonctionnement">
-        <h2>Comment ça marche ?</h2>
-        <ol>
-            <li>Prendre ou téléverser une photo de la zone à analyser.</li>
-            <li>Prétraitement de l’image (ajustement de luminosité, détection de zone d’intérêt).</li>
-            <li>Classification de la lésion via le modèle IA.</li>
-            <li>Affichage des pathologies probables, avec scores de confiance.</li>
-            <li>Recommandations générales : consulter un spécialiste, surveiller l’évolution, etc.</li>
-        </ol>
-        <p>
-            Le prototype web s’appuie sur :
-            <ul>
-                <li>Python + TensorFlow/Keras pour le back-end IA</li>
-                <li>React pour le front-end (SPA)</li>
-                <li>Base de données MongoDB pour stocker anonymement les cas</li>
-            </ul>
-        </p>
-    </section>
-
-    <section id="perspectives">
-        <h2>Perspectives et évolutions</h2>
-        <p>
-            Après cette preuve de concept, l’évolution vers un TRL 4-5 inclura :
-            <ul>
-                <li>Interface mobile native (iOS & Android).</li>
-                <li>Enrichissement de la base par des données cliniques validées.</li>
-                <li>Collaboration directe avec des cliniques pour tests en conditions réelles.</li>
-            </ul>
-        </p>
-        <p>
-            À plus long terme, Meskin ambitionne de devenir une plateforme de télémédecine
-            complète, intégrant la prise de rendez-vous en ligne et le suivi personnalisé.
-        </p>
-    </section>
-
-    <section id="cta">
-        <h2>Prêt·e à découvrir Meskin ?</h2>
-        <p>
-            <a href="Inscription.html">Lance ton prédiagnostic maintenant</a> et rejoins
-            la communauté Meskin pour améliorer ta santé cutanée.
-        </p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Meskin – Tous droits réservés.</p>
-        <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
+        <div class="container">
+            <p>&copy; 2025 Meskin. Tous droits réservés.</p>
+            <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
+        </div>
     </footer>
 </body>
 </html>
+

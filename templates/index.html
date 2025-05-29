@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Meskin - Diagnostic Dermatologique</title>
+</head>
+<body>
+    <h1>Analyser une image de la peau</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Analyser</button>
+    </form>
+
+    {% if image_url %}
+        <h2>Image analysée :</h2>
+        <img src="{{ image_url }}" alt="Image analysée" width="300">
+    {% endif %}
+
+    {% if prediction %}
+        <h2>Résultats :</h2>
+        <ul>
+            {% for maladie, proba in prediction.items() %}
+                <li>{{ maladie }} : {{ '%.2f'|format(proba * 100) }}%</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

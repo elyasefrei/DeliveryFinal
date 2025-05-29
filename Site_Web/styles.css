@@ -1,5 +1,9 @@
 
 body {
+  background-image: url("../image/bg5.jpg");
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;
   background-color: #f5f7fa;              
   font-family: 'Segoe UI', Tahoma, sans-serif;
   color: #333;                            
@@ -60,8 +64,10 @@ nav a:hover {
 
 
 section {
-  margin: 2rem 0;
-  padding: 1.5rem;
+  margin: 1rem auto; 
+  padding: 1rem; 
+  max-width: 600px; 
+  width: 90%; 
   background-color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -242,4 +248,64 @@ caption {
   background-size: cover;
   background-position: center;
   padding: 4rem 1rem; /* ajuste selon l’épaisseur souhaitée */
+}
+
+
+.form-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+#submit-btn {
+  padding: 0.75rem 2rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit-btn:hover {
+  background-color: #2980b9;
+}
+
+
+
+
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-left: 70%;
+}
+
+.auth-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+
+.signup {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #2980b9;
+}
+
+.login {
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+}
+
+.signup:hover {
+  background-color: #2980b9;
+}
+
+.login:hover {
+  background-color: #f8f9fa;
 }

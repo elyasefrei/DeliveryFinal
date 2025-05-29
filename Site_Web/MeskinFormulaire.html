@@ -6,32 +6,45 @@
         <meta name="description" content="MeSkin & Sites Web"> 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    
     </head>
     <body>
+        
         <header>
-                <nav>
-                    <a href="Accueil.html">Accueil</a>
-                    <a href="MeskinFormulaire.html">Formulaire</a>
-                    <a href="./apropos.html">À propos</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-            </header>
+            <nav>
+                <a href="Accueil.html">Accueil</a>
+                <a href="./apropos.html">À propos</a>
+            </nav>
+                
+        </header>
   
 
     <section>
     <form action="#" method="post">
         <fieldset>
             <legend>Vos informations</legend>
-            <label for="nom">Nom :</label><input type="text" name="nom" id="nom"><br>
-            <label for="prenom">Prénom :</label><input type="text" name="prenom" id="prenom"><br>
-            <label for="dob">Date de naissance :</label><input type="date" name="dob" id="dob"><br>
-            <label for="email">Adresse mail :</label><input type="email" name="email" id="email"><br>
-            <label>Statut:
-                <select name="statut">
+            <label>Nom : <input type="text" required name="nom"></label><br>
+            <label>Prénom : <input type="text" required name="prenom"></label><br>
+            <label>Date de naissance : <input type="date" required name="dob"></label><br>
+            <label>Adresse mail : <input type="email" required name="email"></label><br>
+            <label>Statut :
+                <select name="statut" required>
                     <option value="" selected disabled>Choisissez un statut</option>
                     <option value="etudiant">Étudiant</option>
                     <option value="professionnel">Professionnel</option>
                     <option value="particulier">Particulier</option>
                 </select>
             </label>
+            
         </fieldset>
+         <div class="form-actions">
+            <button type="submit" id="submit-btn">Valider le formulaire</button>
+        </div>
+        <p>Déjà un compte ? <a href="connection.html">Connectez-vous</a></p>
+        <footer>
+        <p>&copy; 2025 Meskin – Tous droits réservés.</p>
+        <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
+    </footer>
+        
+        <script type="text/javascript" src = "javascript.js"></script>
+    </html>

@@ -1,64 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Contact – Meskin">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact – Meskin</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  <meta charset="UTF-8">
+  <title>Connexion - Meskin</title>
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
-
-    <header>
+  <header>
+        <div class="auth-buttons">
+            <a href="Connexion.html" class="auth-btn signup">Connection</a>
+            <a href="Inscription.html" class="auth-btn login">Inscription</a>
+        </div>
         <nav>
             <a href="Accueil.html">Accueil</a>
-            <a href="MeskinFormulaire.html">Formulaire</a>
             <a href="apropos.html">À propos</a>
             <a href="contact.html">Contact</a>
         </nav>
-    </header>
+  </header>
 
-    <section>
-        <h1>Contactez l’équipe Meskin</h1>
-        <p>Pour toute question, suggestion ou retour, n’hésitez pas à nous écrire :</p>
-        <ul>
-            <li>
-                <strong>Yanick Shan</strong><br>
-                Développeur Front-End<br>
-                Intégration de l’interface utilisateur, gestion de l’upload de la photo.<br>
-                <a href="mailto:yanick.shan@efrei.net">yanick.shan@efrei.net</a>
-            </li>
-            <li>
-                <strong>Taïno Moutamalle</strong><br>
-                Chef de projet<br>
-                Coordination générale, suivi du planning, communication entre membres.<br>
-                <a href="mailto:taino.moutamalle@efrei.net">taino.moutamalle@efrei.net</a>
-            </li>
-            <li>
-                <strong>Ashley Harinambinina</strong><br>
-                Développeur Back-End<br>
-                Développement de l’algorithme de diagnostic, intégration de la base de données.<br>
-                <a href="mailto:harinambinina.joatombo-ashley@efrei.net">harinambinina.joatombo-ashley@efrei.net</a>
-            </li>
-            <li>
-                <strong>Victor Guième</strong><br>
-                Développeur Front-End<br>
-                Création de la maquette, ergonomie du site, expérience utilisateur.<br>
-                <a href="mailto:victor-emmanuel.guieme@efrei.net">victor-emmanuel.guieme@efrei.net</a>
-            </li>
-            <li>
-                <strong>Elyas Tarzet</strong><br>
-                Data Analyst / ML Engineer<br>
-                Entraînement du modèle, traitement d’image, nettoyage des données.<br>
-                <a href="mailto:elyas.tarzet@efrei.net">elyas.tarzet@efrei.net</a>
-            </li>
-        </ul>
-    </section>
+  <section class="auth-form">
+    <h2>Connectez-vous</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Mot de passe</label>
+        <input type="password" id="login-password" required>
+      </div>
+        <div class="form-actions">
+            <button type="submit" id="submit-btn">Se connecter</button>
+        </div>
 
-    <footer>
+    </form>
+             
+    <p>Pas encore de compte ? <a href="Connexion.html">Inscrivez-vous</a></p>
+  </section>
+      <footer>
         <p>&copy; 2025 Meskin – Tous droits réservés.</p>
         <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
     </footer>
-
 </body>
 </html>
+DeliveryFinal/Site_Web/connection.html at main · elyasefrei/DeliveryFinal 

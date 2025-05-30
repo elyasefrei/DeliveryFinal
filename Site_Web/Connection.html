@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connexion – Meskin</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f7f9fb;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #bdc3c7;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkbox-container input {
+      margin-right: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .error {
+      color: red;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+<form id="login-form">
+  <h2>Connexion</h2>
+
+  <label for="email">Identifiant</label>
+  <input type="text" id="email" name="email" required />
+
+  <label for="password">Mot de passe</label>
+  <input type="password" id="password" name="password" required />
+
+  <div class="checkbox-container">
+    <input type="checkbox" id="show-password" />
+    <label for="show-password">Afficher le mot de passe</label>
+  </div>
+
+  <button type="submit">Se connecter</button>
+
+  <div class="error" id="error-msg"></div>
+</form>
+</body>
+
+<script>
+document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    const userDataRaw = localStorage.getItem("user_" + email);
+
+    if (!userDataRaw) {
+        document.getElementById("error-msg").textContent = "Aucun compte trouvé.";
+        return;
+    }
+
+    const userData = JSON.parse(userDataRaw);
+
+    if (userData.password === password) {
+        localStorage.setItem("loggedUser", email);
+        window.location.href = "../html/Diagnostic.html";
+    } else {
+        document.getElementById("error-msg").textContent = "Mot de passe incorrect.";
+    }
+});
+
+// Affichage du mot de passe
+document.getElementById("show-password").addEventListener("change", function() {
+    const pwdInput = document.getElementById("password");
+    pwdInput.type = this.checked ? "text" : "password";
+});
+</script>
+
+
+</html>

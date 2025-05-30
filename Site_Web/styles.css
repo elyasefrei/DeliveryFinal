@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -88,6 +89,15 @@ nav a:hover {
 
 .btn.signup:hover {
     background-color: #0056b3;
+}
+
+.btn.logout {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+.btn.logout:hover {
+    background-color: #eaf4ff;
 }
 
 .btn.primary {
@@ -276,4 +286,17 @@ nav a.active {
   .team-member {
     max-width: 100%;
   }
+}
+
+.disclaimer {
+    background-color: #fff3f3;
+    border-left: 4px solid #e74c3c;
+    padding: 1rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    font-weight: bold;
+    color: #c0392b;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 6px;
 }

@@ -1,3 +1,4 @@
+
 /* Base et reset */
 * {
     box-sizing: border-box;
@@ -192,3 +193,4 @@ footer a:hover {
         gap: 0.5rem;
     }
 }
+

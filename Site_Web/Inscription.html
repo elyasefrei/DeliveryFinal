@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +6,7 @@
     <meta name="description" content="Meskin – Prédiagnostic des maladies de peau" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Inscription – Meskin</title>
-    <link rel="stylesheet" href="styles1.css" />
+    <link rel="stylesheet" href="../css/styles1.css" />
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -110,9 +111,9 @@
 
 <header>
     <nav class="centered-nav">
-        <a href="Accueil.html">Accueil</a>
-        <a href="apropos.html">À propos</a>
-        <a href="contact.html">Contact</a>
+        <a href="../html/Accueil.html">Accueil</a>
+        <a href="../html/apropos.html">À propos</a>
+        <a href="../html/contact.html">Contact</a>
     </nav>
 </header>
 
@@ -145,29 +146,49 @@
         </p>
 
         <p class="login-link">
-            Déjà un compte ? <a href="Connexion.html">Connectez-vous</a>
+            Déjà un compte ? <a href="../html/Connection.html">Connectez-vous</a>
         </p>
     </div>
 </section>
 
 <footer>
     <p>&copy; 2025 Meskin – Tous droits réservés.</p>
-    <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
+    <p><a href="../html/apropos.html">À propos</a> | <a href="../html/contact.html">Contact</a></p>
 </footer>
 
 <script>
-    document.getElementById("inscription-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Empêche l'envoi du formulaire
-        document.getElementById("inscription-form").style.display = "none";
-        document.getElementById("confirmation-message").style.display = "block";
-    });
+document.getElementById("inscription-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche le rechargement
 
-    function togglePassword() {
-        const passwordInput = document.getElementById("password");
-        passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    const nom = document.getElementById("nom").value.trim();
+    const prenom = document.getElementById("prenom").value.trim();
+    const dob = document.getElementById("dob").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    // Vérifie si un compte existe déjà
+    if (localStorage.getItem("user_" + email)) {
+        alert("Un compte avec cet email existe déjà.");
+        return;
     }
+
+    const userData = {
+        nom,
+        prenom,
+        dob,
+        email,
+        password // ⚠️ non sécurisé, juste pour démo
+    };
+
+    localStorage.setItem("user_" + email, JSON.stringify(userData));
+
+    // Affiche un message de confirmation
+    document.getElementById("inscription-form").style.display = "none";
+    document.getElementById("confirmation-message").style.display = "block";
+});
 </script>
 
 </body>
 </html>
+
 

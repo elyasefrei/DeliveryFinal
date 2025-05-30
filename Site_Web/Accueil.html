@@ -5,20 +5,19 @@
     <meta name="description" content="Meskin - Prédiagnostic IA">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meskin – Prédiagnostic IA des maladies cutanées</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
         <div class="container header-content">
             <h1>Meskin</h1>
             <nav>
-                <a href="Accueil.html">Accueil</a>
-                <a href="apropos.html">À propos</a>
-                <a href="contact.html">Contact</a>
+                <a href="../html/Accueil.html">Accueil</a>
+                <a href="../html/apropos.html">À propos</a>
+                <a href="../html/contact.html">Contact</a>
             </nav>
-            <div class="auth-buttons">
-                <a href="connexion.html" class="btn login">Connexion</a>
-                <a href="Inscription.html" class="btn signup">Inscription</a>
+            <div class="auth-buttons" id="auth-buttons">
+            <!-- Les boutons seront injectés par JavaScript -->
             </div>
         </div>
     </header>
@@ -27,8 +26,16 @@
         <div class="container">
             <h2>Votre santé cutanée, notre priorité</h2>
             <p>Meskin analyse une photo de votre peau pour proposer un prédiagnostic rapide grâce à l’IA.</p>
-            <a href="Inscription.html" class="btn primary">Commencer maintenant</a>
+            <a href="#" class="btn primary" id="start-btn">Commencer maintenant</a>
+ 
         </div>
+    </section>
+
+    <section class="disclaimer">
+    <p>
+        ⚠️ ⚠️ ⚠️<br> Les résultats de MeSkin ne constituent pas un diagnostic médical et ne remplacent en aucun cas l'avis d'un professionnel de santé. 
+        <strong>Seul un médecin ou un spécialiste est habilité à  vous fournir des recommandations adaptées à votre situation.<br>⚠️ ⚠️ ⚠️ </strong>
+    </p>
     </section>
 
     <section class="container" id="definition">
@@ -61,9 +68,60 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Meskin. Tous droits réservés.</p>
-            <p><a href="apropos.html">À propos</a> | <a href="contact.html">Contact</a></p>
+            <p><a href="../html/apropos.html">À propos</a> | <a href="../html/contact.html">Contact</a></p>
         </div>
     </footer>
 </body>
-</html>
 
+<script>
+    const authContainer = document.getElementById('auth-buttons');
+    const loggedUser = localStorage.getItem('loggedUser');
+
+    if (loggedUser) {
+        // Si connecté : bouton Déconnexion
+        const logoutBtn = document.createElement('a');
+        logoutBtn.textContent = "Déconnexion";
+        logoutBtn.href = "#";
+        logoutBtn.className = "btn logout";
+        logoutBtn.onclick = (e) => {
+            e.preventDefault(); // empêche le comportement par défaut
+            const confirmLogout = confirm("Êtes-vous sûr de vouloir vous déconnecter ?");
+            if (confirmLogout) {
+                localStorage.removeItem('loggedUser');
+                window.location.reload();
+            }
+        };
+        authContainer.innerHTML = ""; // vide d'abord le conteneur
+        authContainer.appendChild(logoutBtn);
+    } else {
+        // Si non connecté : boutons Connexion & Inscription
+        const loginBtn = document.createElement('a');
+        loginBtn.textContent = "Connexion";
+        loginBtn.href = "../html/Connection.html";
+        loginBtn.className = "btn login";
+
+        const signupBtn = document.createElement('a');
+        signupBtn.textContent = "Inscription";
+        signupBtn.href = "../html/Inscription.html";
+        signupBtn.className = "btn signup";
+
+        authContainer.innerHTML = ""; // vide d'abord le conteneur
+        authContainer.appendChild(loginBtn);
+        authContainer.appendChild(signupBtn);
+    }
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const isLoggedIn = localStorage.getItem('loggedUser');
+            if (isLoggedIn) {
+                window.location.href = "../html/Diagnostic.html";
+            } else {
+                window.location.href = "../html/Inscription.html";
+            }
+        });
+    }
+</script>
+
+
+</html>

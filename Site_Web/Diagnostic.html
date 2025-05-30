@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/diagnostic.css">
+    <title>Diagnostic - Meskin</title>
+ 
+
+</head>
+<body>
+    <header>
+        <h1>Diagnostic Cutané</h1>
+        <a href="../html/Historique.html" class="btn">Voir l’historique</a>
+    </header>
+
+    <main>
+        <div class="upload-container">
+            <label class="upload-label">Déposer votre image (JPEG ou PNG)</label>
+            
+            <input type="file" id="file-upload" accept=".jpg,.jpeg,.png">
+            <label for="file-upload" class="upload-btn">Choisir un fichier</label>
+            
+            <p class="file-info">Formats acceptés: .jpg, .jpeg, .png</p>
+            
+            <img id="preview" class="file-preview" alt="Aperçu de l'image">
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="submit-btn">Analyser l'image</button>
+        </div>
+        <div id="result-buttons" style="text-align: center; margin-top: 20px;"></div>
+        <section class="disclaimer">
+            <p>
+            ⚠️ ⚠️ ⚠️<br> Les résultats de MeSkin ne constituent pas un diagnostic médical et ne remplacent en aucun cas l'avis d'un professionnel de santé. 
+            <strong>Seul un médecin ou un spécialiste est habilité à  vous fournir des recommandations adaptées à votre situation.<br>⚠️ ⚠️ ⚠️ </strong>
+            </p>
+        </section>
+    </main>
+
+<script>
+    const fileInput = document.getElementById('file-upload');
+    const preview = document.getElementById('preview');
+    const resultContainer = document.getElementById('result-buttons');
+    const analyzeButton = document.querySelector('.submit-btn');
+    let selectedImageData = null;
+
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                selectedImageData = event.target.result;
+                preview.src = event.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    analyzeButton.addEventListener('click', function() {
+        if (!selectedImageData) {
+            alert("Veuillez choisir une image avant d'analyser.");
+            return;
+        }
+
+        // Récupérer l'utilisateur connecté
+        const user = localStorage.getItem('loggedUser') || 'anonyme';
+        const historyKey = 'history_' + user;
+
+        // Charger l'historique existant
+        const currentHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+
+        // Ajouter la nouvelle image avec la date
+        currentHistory.push({
+            image: selectedImageData,
+            date: new Date().toISOString()
+        });
+
+        // Enregistrer dans localStorage
+        localStorage.setItem(historyKey, JSON.stringify(currentHistory));
+
+        // Afficher les boutons suite à l'analyse
+        resultContainer.innerHTML = '';
+
+        const accueilBtn = document.createElement('button');
+        accueilBtn.textContent = "Retour à l'accueil";
+        accueilBtn.className = "submit-btn";
+        accueilBtn.style.margin = "10px";
+        accueilBtn.onclick = () => {
+            window.location.href = 'Accueil.html';
+        };
+
+        const resetBtn = document.createElement('button');
+        resetBtn.textContent = "Réinitialiser";
+        resetBtn.className = "submit-btn";
+        resetBtn.style.margin = "10px";
+        resetBtn.onclick = () => {
+            window.location.reload();
+        };
+
+        resultContainer.appendChild(accueilBtn);
+        resultContainer.appendChild(resetBtn);
+    });
+</script>
+</body>
+</html>
